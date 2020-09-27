@@ -1,0 +1,22 @@
+<mat-drawer-container class="adm-container" color="primary" autosize>
+  <mat-drawer #drawer mode="side">
+    <div class="item-sidenav">
+      <h1>{{(client$ | async).name}}</h1>
+    </div>
+    <mat-selection-list #shoes [multiple]="false">
+      <mat-list-option role="listitem" class="item-sidenav" *ngFor="let item of menu" (click)="toRoute(item.route)">
+        <mat-icon mat-list-icon>{{item.icon}}</mat-icon>
+        <div mat-line>{{item.name}}</div>
+        <mat-divider></mat-divider>
+      </mat-list-option>
+    </mat-selection-list>
+  </mat-drawer>
+  <mat-toolbar color="primary">
+    <button mat-icon-button aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
+      <mat-icon class="mat-icon-no-color">menu</mat-icon>
+    </button>
+    <span>Administrador</span>
+    <span class="adm-spacer"></span>
+  </mat-toolbar>
+  <router-outlet></router-outlet>
+</mat-drawer-container>
